@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Robot type="FirstInspires-FTC">
+    <LynxUsbDevice name="Control Hub Portal" serialNumber="(embedded)" parentModuleAddress="173">
+        <!-- Note: Analog ports 0 and 2 are closer to the edge of the hubs -->
+        <LynxModule name="Control Hub" port="173">
+            <!-- Motors -->
+            <goBILDA5202SeriesMotor name="intake" port="0"/>
+            <goBILDA5202SeriesMotor name="fl" port="1"/>
+            <goBILDA5202SeriesMotor name="transfer" port="2"/>
+            <goBILDA5202SeriesMotor name="bl" port="3"/>
+            <!-- Servos -->
+            <Servo name="horizontalFront" port="0"/>
+            <Servo name="horizontalBack" port="1"/>
+            <Servo name="vertical" port="2"/>
+            <Servo name="leftPto" port="3"/>
+            <Servo name="headlightLeft" port="4"/>
+            <ContinuousRotationServo name="leftInitialLift" port="5"/>
+            <!-- I2C -->
+            <goBILDAPinpoint name="pinpoint" bus="1" port="0"/> <!-- Physical port 1 -->
+            <LynxEmbeddedIMU name="imu" bus="0" port="0"/>
+        </LynxModule>+
+        <LynxModule name="Expansion Hub 2" port="2">
+            <!-- Motors -->
+            <goBILDA5202SeriesMotor name="br" port="0"/>
+            <goBILDA5202SeriesMotor name="fr" port="1"/>
+            <goBILDA5202SeriesMotor name="rightFlywheel" port="2"/>
+            <goBILDA5202SeriesMotor name="leftFlywheel" port="3"/> <!-- Has green tape -->
+            <!-- Servos -->
+            <ContinuousRotationServo name="rightInitialLift" port="0"/>
+            <Servo name="headlightRight" port="1"/>
+            <Servo name="rightPto" port="2"/>
+            <Servo name="hood" port="3"/>
+            <ContinuousRotationServo name="turretServoBack" port="4"/>
+            <ContinuousRotationServo name="turretServoFront" port="5"/>
+            <!-- I2C -->
+            <SRSHub name="srsHub" bus="2" port="0"/> <!-- Physical port 2 -->
+        </LynxModule>
+    </LynxUsbDevice>
+    <!-- OV9782 -->
+    <Webcam name="right" serialNumber="UC852"/>
+    <!-- OV9281 -->
+    <Webcam name="left" serialNumber="UC762"/>
+</Robot>
