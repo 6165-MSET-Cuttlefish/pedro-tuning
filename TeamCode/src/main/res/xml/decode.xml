@@ -16,7 +16,6 @@
             <Servo name="headlightLeft" port="4"/>
             <ContinuousRotationServo name="leftInitialLift" port="5"/>
             <!-- I2C -->
-            <goBILDAPinpoint name="pinpoint" bus="1" port="0"/> <!-- Physical port 1 -->
             <LynxEmbeddedIMU name="imu" bus="0" port="0"/>
         </LynxModule>+
         <LynxModule name="Expansion Hub 2" port="2">
@@ -33,6 +32,7 @@
             <ContinuousRotationServo name="turretServoBack" port="4"/>
             <ContinuousRotationServo name="rightInitialLift" port="5"/>
             <!-- I2C -->
+            <goBILDAPinpoint name="pinpoint" bus="1" port="0"/> <!-- Physical port 1 -->
             <SRSHub name="srsHub" bus="2" port="0"/> <!-- Physical port 2 -->
         </LynxModule>
     </LynxUsbDevice>
