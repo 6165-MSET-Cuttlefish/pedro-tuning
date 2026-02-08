@@ -60,10 +60,12 @@ public class Robot {
     public ElapsedTime endgameDecelTimer;
 
     public final EnhancedOpMode opMode;
+    public final EnhancedTelemetry telemetry;
 
     public Robot(EnhancedOpMode opMode, boolean preservePosition)
             throws InterruptedException {
         this.opMode = opMode;
+        this.telemetry = (EnhancedTelemetry) opMode.telemetry;
 
         Robot previousRobot = robot;
         setTargetPoseForAlliance();
