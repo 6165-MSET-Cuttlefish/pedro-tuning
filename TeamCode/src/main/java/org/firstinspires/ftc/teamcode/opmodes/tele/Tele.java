@@ -252,23 +252,23 @@ public class Tele extends OpModeEx {
 
         if (gamepad1.right_bumper) {
             Magazine.VerticalState.HALF_DOWN.apply();
-//        } else if (gamepad1.right_trigger_pressed) {
-//            Magazine.VerticalState.ON.apply();
+        } else if (gamepad1.right_trigger_pressed) {
+            Magazine.VerticalState.ON.apply();
         } else {
             Magazine.VerticalState.OFF.apply();
         }
 
-//        if (gamepad2.right_trigger_pressed) {
-//            oldIntake = robot.magazine.get(Magazine.IntakeState.class);
-//            Magazine.IntakeState.HALF.apply();
-//        } else if (gamepad2.left_trigger_pressed) {
-//            oldIntake = robot.magazine.get(Magazine.IntakeState.class);
-//            double analogValue = gamepad2.left_trigger;
-//            Magazine.IntakeState.MANUAL.setValue(-analogValue);
-//            Magazine.IntakeState.MANUAL.apply();
-//        } if (gamepad2.leftTriggerWasReleased() || gamepad2.rightTriggerWasReleased()) {
-//            Magazine.IntakeState.OFF.apply();
-//        }
+        if (gamepad2.right_trigger_pressed) {
+            oldIntake = robot.magazine.get(Magazine.IntakeState.class);
+            Magazine.IntakeState.HALF.apply();
+        } else if (gamepad2.left_trigger_pressed) {
+            oldIntake = robot.magazine.get(Magazine.IntakeState.class);
+            double analogValue = gamepad2.left_trigger;
+            Magazine.IntakeState.MANUAL.setValue(-analogValue);
+            Magazine.IntakeState.MANUAL.apply();
+        } if (gamepad2.leftTriggerWasReleased() || gamepad2.rightTriggerWasReleased()) {
+            Magazine.IntakeState.OFF.apply();
+        }
 
         if (driver2Gamepad.LB().wasJustPressed()) {
             (robot.turret.get(Turret.TurretState.class).equals(Turret.TurretState.AUTOAIM)

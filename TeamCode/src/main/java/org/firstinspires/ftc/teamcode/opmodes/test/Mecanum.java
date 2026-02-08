@@ -63,11 +63,11 @@ public class Mecanum extends OpMode {
             lastBlPower = blPower;
         }
 
-//        if (gamepad1.right_trigger_pressed) {
-//            intake.setPower(1);
-//        } else {
-//            intake.setPower(0);
-//        }
+        if (gamepad1.right_trigger_pressed) {
+            intake.setPower(1);
+        } else {
+            intake.setPower(0);
+        }
 
         telemetry.addData("fl", fl.getPower());
         telemetry.addData("bl", fl.getPower());
