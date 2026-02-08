@@ -6,10 +6,6 @@ import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.PoseHistory;
 import com.pedropathing.util.Timer;
-import com.skeletonarmy.marrow.prompts.MultiOptionPrompt;
-import com.skeletonarmy.marrow.prompts.OptionPrompt;
-import com.skeletonarmy.marrow.prompts.Prompter;
-import com.skeletonarmy.marrow.prompts.ValuePrompt;
 
 import org.firstinspires.ftc.teamcode.architecture.vision.AllianceColor;
 import org.firstinspires.ftc.teamcode.core.Context;
@@ -21,7 +17,6 @@ public abstract class Auto extends OpModeEx {
     protected Pose startPose;
     protected PoseHistory poseHistory;
     protected Timer actionTimer;
-    protected Prompter prompter = new Prompter(this);
     protected int delayMs = 0; //offset auto for alliance
     protected boolean runIntakeScore1Choice = true, runIntakeScore2Choice = true,
            runGateChoice = true, runIntakeGateChoice = true;
@@ -73,28 +68,6 @@ public abstract class Auto extends OpModeEx {
 
         Magazine.HeadlightState.STROBE.apply();
 
-        prompter.prompt("color", new OptionPrompt<>("Select Color", AllianceColor.RED, AllianceColor.BLUE))
-                .prompt("delayMs", new ValuePrompt("Start Delay (ms)", 0, 10000, 0, 1000))
-                .prompt("far/close", new OptionPrompt<>("Select Mode", "Far", "Close"))
-                .prompt("path segments", () -> {
-                    if (prompter.get("far/close").equals("Far")) {
-                        return new MultiOptionPrompt<>(
-                                "Select Far Path Segments",
-                                false,
-                                true,
-                                3,
-                                "runIntakeScore1Choice", "runIntakeScore2Choice", "runGateChoice"); //might have to be enum with T/F?
-                    }
-                    return new MultiOptionPrompt<>(
-                            "Select Close Path Segments",
-                            false,
-                            true,
-                            4,
-                            "runIntakeScore1Choice", "runIntakeScore2Choice", "runGateChoice", "runIntakeGateChoice");
-                });
-
-        prompter.onComplete(this::onPromptsComplete);
-
     }
 
     @Override
@@ -108,7 +81,6 @@ public abstract class Auto extends OpModeEx {
             Context.motif = robot.rightCamera.getObelisk();
             robot.rightCamera.updateCameraStream(Context.rightCameraStream);
         }
-        prompter.run();
 
         renderVisualization(true);
     }
@@ -135,26 +107,5 @@ public abstract class Auto extends OpModeEx {
     }
 
     @Override
-    protected void telemetry() {
-        robot.telemetry.addDashboardData("Time Elapsed", "%.1f seconds", actionTimer.getElapsedTimeSeconds());
-        robot.telemetry.addDashboardData("Scheduler", robot.pathActionScheduler.getDebugInfo());
-        robot.telemetry.addDashboardData("Total Segments", robot.pathActionScheduler.getTotalSegments());
-        robot.telemetry.addDashboardData("Obelisk", Context.motif.toString());
-        robot.telemetry.addDashboardData("delayMs", delayMs);
-    }
-    protected void onPromptsComplete() {
-            Context.allianceColor = prompter.get("color");
-            delayMs = prompter.get("delayMs");
-//            String pathSegments = prompter.get("path segments"); //not exactly sure what type MultiOptionPrompt returns so will test
-//            RobotLog.e("pathSegments: " + pathSegments + "..." + prompter.get("path segments").toString());
-
-        // set the variables in close/far, like runIntakeScore1 = runIntakeScore1Choice
-//            if (prompter.get("far/close").equals("Far")) {
-//                Far.runIntakeScore1 = (boolean) prompter.get("path segments"); //get runIntakeScore1Choice
-//                //other far segments
-//            } else {
-//                Close.runIntakeScore1 = (boolean) prompter.get("path segments");
-//                //other close segments
-//            }
-    }
+    protected void telemetry() {}
 }
