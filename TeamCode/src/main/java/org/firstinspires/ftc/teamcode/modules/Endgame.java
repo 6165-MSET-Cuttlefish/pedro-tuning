@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.modules;
 import static org.firstinspires.ftc.teamcode.core.Robot.endgameTelemetry;
 import static org.firstinspires.ftc.teamcode.core.Robot.robot;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.CRServoImplEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -14,7 +13,6 @@ import org.firstinspires.ftc.teamcode.architecture.hardware.AbsoluteAnalogEncode
 import org.firstinspires.ftc.teamcode.core.ModuleEx;
 import org.firstinspires.ftc.teamcode.lib.State;
 
-@Config
 public class Endgame extends ModuleEx {
     private ServoImplEx leftPto;
     private ServoImplEx rightPto;

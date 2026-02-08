@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.opmodes.test;
 
 import static org.firstinspires.ftc.teamcode.architecture.auto.FieldPose.ColorPose;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -12,7 +11,6 @@ import org.firstinspires.ftc.teamcode.modules.Magazine;
 import org.firstinspires.ftc.teamcode.modules.Shooter;
 import org.firstinspires.ftc.teamcode.modules.Turret;
 
-@Config
 @TeleOp(name = "Module Test", group = "Test")
 public class ModuleTest extends OpModeEx {
     // Dashboard-exposed fields

@@ -4,7 +4,6 @@ import static org.firstinspires.ftc.teamcode.modules.MagazineState.ArtifactColor
 import static org.firstinspires.ftc.teamcode.modules.MagazineState.ArtifactColor.PURPLE;
 import static org.firstinspires.ftc.teamcode.modules.Turret.turretOffset;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -27,7 +26,6 @@ import org.firstinspires.ftc.teamcode.modules.Turret;
 import java.util.HashMap;
 import java.util.Map;
 
-@Config
 @TeleOp(name = "Tele", group = "A")
 public class Tele extends OpModeEx {
     private ACTION_LAYER actionLayer = ACTION_LAYER.TELE;

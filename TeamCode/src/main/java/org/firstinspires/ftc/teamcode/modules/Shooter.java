@@ -6,7 +6,6 @@ import static org.firstinspires.ftc.teamcode.modules.Turret.turretConfig;
 import static org.firstinspires.ftc.teamcode.modules.Turret.turretX;
 import static org.firstinspires.ftc.teamcode.modules.Turret.turretY;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.math.Vector;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -22,7 +21,6 @@ import org.firstinspires.ftc.teamcode.lib.EnhancedMotor;
 import org.firstinspires.ftc.teamcode.lib.EnhancedServo;
 import org.firstinspires.ftc.teamcode.lib.State;
 
-@Config
 public class Shooter extends ModuleEx {
     private static final double TICKS_PER_REV = 8192.0;
     private static final double VELOCITY_TOLERANCE_RPM = 60.0;

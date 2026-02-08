@@ -4,8 +4,6 @@ import static org.firstinspires.ftc.teamcode.core.Robot.aprilTagTelemetry;
 import static org.firstinspires.ftc.teamcode.core.Robot.robot;
 import static org.firstinspires.ftc.teamcode.modules.MagazineState.ArtifactColor.EMPTY;
 
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -21,7 +19,6 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 
 import java.util.ArrayList;
 
-@Config
 public class AprilTagLocalizer extends ModuleEx {
     private Camera right;
     private Camera left;
@@ -114,52 +111,7 @@ public class AprilTagLocalizer extends ModuleEx {
     }
 
     private void drawRobotOnField() {
-        TelemetryPacket packet = robot.packet;
-
-        if (!poses.isEmpty()) {
-            double sumX = 0;
-            double sumY = 0;
-            double sumHeading = 0;
-            for (AprilTagPose ap : poses) {
-                Pose p = addHistoryOffset(ap.getPose());
-                sumX += p.getX();
-                sumY += p.getY();
-                sumHeading += Math.toRadians(p.getHeading());
-            }
-            double avgX = sumX / poses.size();
-            double avgY = sumY / poses.size();
-            double avgHeadingRad = Math.atan2(
-                    Math.sin(sumHeading / poses.size()), Math.cos(sumHeading / poses.size()));
-            double avgHeadingDeg = Math.toDegrees(avgHeadingRad);
-            avgPose = new Pose(avgX, avgY, avgHeadingDeg);
-
-            double[] avgField = FieldVisualization.toField(avgX, avgY);
-
-            packet.fieldOverlay().setAlpha(1);
-            packet.fieldOverlay().setStroke("green");
-            packet.fieldOverlay().strokeCircle(avgField[0], avgField[1], 9);
-            packet.fieldOverlay().strokeLine(
-                    avgField[0],
-                    avgField[1],
-                    avgField[0] + 9 * Math.cos(avgHeadingRad),
-                    avgField[1] + 9 * Math.sin(avgHeadingRad));
-
-            for (AprilTagPose pose : poses) {
-                Pose robotRawPose = pose.getPose();
-                Pose robotPose = addHistoryOffset(robotRawPose);
-                double[] robotField = FieldVisualization.toField(robotPose.getX(), robotPose.getY());
-
-                packet.fieldOverlay().setStrokeWidth(2);
-                packet.fieldOverlay().setAlpha(1);
-                packet.fieldOverlay().setStroke(pose.color == AllianceColor.BLUE ? "blue" : "red");
-                packet.fieldOverlay().strokeCircle(robotField[0], robotField[1], 9);
-                packet.fieldOverlay().strokeLine(
-                        robotField[0],
-                        robotField[1],
-                        robotField[0] + 9 * Math.cos(robotPose.getHeading()),
-                        robotField[1] + 9 * Math.sin(robotPose.getHeading()));
-            }
-        }
+        // Dashboard visualization removed - calculations skipped
     }
 
     public Pose addHistoryOffset(Pose pose) {

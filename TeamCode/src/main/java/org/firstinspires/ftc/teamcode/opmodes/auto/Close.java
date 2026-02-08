@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.opmodes.auto;
 
 import static org.firstinspires.ftc.teamcode.architecture.auto.FieldPose.ColorPose;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
@@ -16,7 +15,6 @@ import org.firstinspires.ftc.teamcode.lib.Actions;
 import org.firstinspires.ftc.teamcode.modules.Magazine;
 
 @Autonomous(name = "Close", group = "A")
-@Config
 public class Close extends Auto {
     public static boolean runIntakeScore1 = true;
     public static boolean runGate = false;

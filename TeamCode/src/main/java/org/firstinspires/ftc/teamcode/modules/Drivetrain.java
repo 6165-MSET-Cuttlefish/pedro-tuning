@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.modules;
 import static org.firstinspires.ftc.teamcode.core.Robot.drivetrainTelemetry;
 import static org.firstinspires.ftc.teamcode.core.Robot.robot;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,7 +15,6 @@ import org.firstinspires.ftc.teamcode.core.ModuleEx;
 import org.firstinspires.ftc.teamcode.lib.EnhancedMotor;
 import org.firstinspires.ftc.teamcode.lib.State;
 
-@Config
 public class Drivetrain extends ModuleEx {
     private final EnhancedMotor fl, bl, br, fr;
     private final AnalogInput floodgate;

@@ -3,13 +3,11 @@ package org.firstinspires.ftc.teamcode.core;
 import static org.firstinspires.ftc.teamcode.modules.MagazineState.ArtifactColor.GREEN;
 import static org.firstinspires.ftc.teamcode.modules.MagazineState.ArtifactColor.PURPLE;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 
 import org.firstinspires.ftc.teamcode.architecture.vision.AllianceColor;
 import org.firstinspires.ftc.teamcode.modules.MagazineState;
 
-@Config
 public final class Context {
     public static AllianceColor allianceColor = AllianceColor.BLUE;
 

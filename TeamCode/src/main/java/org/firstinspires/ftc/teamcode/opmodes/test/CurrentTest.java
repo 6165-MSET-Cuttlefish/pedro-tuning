@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -13,7 +10,6 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
-@Config
 @TeleOp(name = "Current Test", group = "Test")
 public class CurrentTest extends LinearOpMode {
     public static boolean controlHubStall = false;
@@ -27,7 +23,6 @@ public class CurrentTest extends LinearOpMode {
     ElapsedTime timer;
     public VoltageSensor voltageSensor;
     public double voltage;
-    MultipleTelemetry tel;
 
     @Override
     public void runOpMode() {
@@ -43,8 +38,6 @@ public class CurrentTest extends LinearOpMode {
 
         timer = new ElapsedTime();
         voltageSensor = hardwareMap.voltageSensor.iterator().next();
-
-        tel = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         waitForStart();
 
@@ -94,11 +87,11 @@ public class CurrentTest extends LinearOpMode {
 
             voltage = voltageSensor.getVoltage();
 
-            tel.addData("current (A)", "%.2f", current);
-            tel.addData("lastCurrent (A)", "%.2f", lastCurrent);
-            tel.addData("voltage (V)", "%.2f", voltage);
-            tel.addData("timer (ms since cross)", "%.0f", timer.milliseconds());
-            tel.update();
+            telemetry.addData("current (A)", "%.2f", current);
+            telemetry.addData("lastCurrent (A)", "%.2f", lastCurrent);
+            telemetry.addData("voltage (V)", "%.2f", voltage);
+            telemetry.addData("timer (ms since cross)", "%.0f", timer.milliseconds());
+            telemetry.update();
 
             RobotLog.ii(TAG, "current=%.2f A, last=%.2f A, voltage=%.2f V, timer=%.0f ms", current,
                     lastCurrent, voltage, timer.milliseconds());

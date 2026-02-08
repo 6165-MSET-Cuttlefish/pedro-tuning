@@ -1,8 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -15,7 +13,6 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 import org.firstinspires.ftc.teamcode.architecture.control.PidflController;
 
-@Config
 @TeleOp(name = "Intake + Shooter + Magazine Test", group = "Test")
 public class IntakeShooterMagazineTest extends OpMode {
     private static final double TICKS_PER_REV = 8192.0;
@@ -107,8 +104,6 @@ public class IntakeShooterMagazineTest extends OpMode {
 
     @Override
     public void init() {
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-
         initializeShooter();
         initializeIntakeMagazine();
         initializeTurret();

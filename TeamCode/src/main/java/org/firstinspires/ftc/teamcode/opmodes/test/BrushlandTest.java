@@ -1,14 +1,12 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.AnalogInput;
 
 @TeleOp(name = "Brushland Test", group = "Test")
 public class BrushlandTest extends LinearOpMode {
-    private MultipleTelemetry tel;
     private AnalogInput analogPin0;
     private AnalogInput analogPin1;
     private AnalogInput analogPin2;
@@ -18,8 +16,6 @@ public class BrushlandTest extends LinearOpMode {
         analogPin0 = hardwareMap.analogInput.get("analog0");
         analogPin1 = hardwareMap.analogInput.get("analog1");
         analogPin2 = hardwareMap.analogInput.get("analog2");
-
-        tel = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         waitForStart();
 
@@ -39,28 +35,28 @@ public class BrushlandTest extends LinearOpMode {
             String pattern = getColorCode(result2.color) + getColorCode(result1.color)
                     + getColorCode(result0.color);
 
-            tel.addData("Pattern", pattern);
-            tel.addLine();
+            telemetry.addData("Pattern", pattern);
+            telemetry.addLine();
 
-            tel.addLine("=== Sensor 0 (Analog 0) ===");
+            telemetry.addLine("=== Sensor 0 (Analog 0) ===");
             displaySensor(voltage0, hue0, result0);
-            tel.addLine();
+            telemetry.addLine();
 
-            tel.addLine("=== Sensor 1 (Analog 1) ===");
+            telemetry.addLine("=== Sensor 1 (Analog 1) ===");
             displaySensor(voltage1, hue1, result1);
-            tel.addLine();
+            telemetry.addLine();
 
-            tel.addLine("=== Sensor 2 (Analog 2) ===");
+            telemetry.addLine("=== Sensor 2 (Analog 2) ===");
             displaySensor(voltage2, hue2, result2);
 
-            tel.update();
+            telemetry.update();
         }
     }
 
     private void displaySensor(double voltage, double hue, DetectionResult result) {
-        tel.addData("Voltage (V)", String.format("%.2f", voltage));
-        tel.addData("Hue (0-360°)", String.format("%.1f", hue));
-        tel.addData("Detected Color", result.color);
+        telemetry.addData("Voltage (V)", String.format("%.2f", voltage));
+        telemetry.addData("Hue (0-360°)", String.format("%.1f", hue));
+        telemetry.addData("Detected Color", result.color);
     }
 
     private static class DetectionResult {

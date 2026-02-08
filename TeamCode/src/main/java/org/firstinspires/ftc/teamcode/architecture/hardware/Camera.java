@@ -8,8 +8,6 @@ import static org.firstinspires.ftc.teamcode.modules.MagazineState.ArtifactColor
 
 import android.util.Size;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -25,7 +23,6 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Config
 public class Camera {
     private final AprilTagProcessor aprilTag;
     public VisionPortal visionPortal;
@@ -93,13 +90,7 @@ public class Camera {
     }
 
     public void updateCameraStream(boolean command) {
-        if (isStreaming && !command) {
-            FtcDashboard.getInstance().stopCameraStream();
-            isStreaming = false;
-        } else if (!isStreaming && command) {
-            FtcDashboard.getInstance().startCameraStream(visionPortal, 10);
-            isStreaming = true;
-        }
+        // Dashboard camera streaming removed
     }
 
     public void close() {

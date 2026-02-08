@@ -4,7 +4,6 @@ import static org.firstinspires.ftc.teamcode.architecture.auto.FieldVisualizatio
 import static org.firstinspires.ftc.teamcode.core.Robot.robot;
 import static org.firstinspires.ftc.teamcode.core.Robot.turretTelemetry;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.math.Vector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -16,7 +15,6 @@ import org.firstinspires.ftc.teamcode.core.ModuleEx;
 import org.firstinspires.ftc.teamcode.lib.EnhancedServo;
 import org.firstinspires.ftc.teamcode.lib.State;
 
-@Config
 public class Turret extends ModuleEx {
     public static double turretOffset = 0;
     public static double POSITION_TOLERANCE_DEGREES = 1.0;
@@ -124,9 +122,6 @@ public class Turret extends ModuleEx {
             double turretDashX = toField(new Pose(turretFieldX, turretFieldY)).getX();
             double turretDashY = toField(new Pose(turretFieldX, turretFieldY)).getY();
 
-            robot.packet.fieldOverlay().setStroke("#FFFFFF")
-                    .fillCircle(turretDashX, turretDashY, 2);
-
             double targetX = robot.targetPose.getX();
             double targetY = robot.targetPose.getY();
 
@@ -141,9 +136,6 @@ public class Turret extends ModuleEx {
 
             double targetDashX = toField(new Pose(targetX, targetY)).getX();
             double targetDashY = toField(new Pose(targetX, targetY)).getY();
-
-            robot.packet.fieldOverlay().setStroke(Context.allianceColor.equals(AllianceColor.BLUE) ? "blue" : "red")
-                    .fillCircle(targetDashX, targetDashY, 2);
 
             double absoluteAngle =
                     Math.toDegrees(Math.atan2(targetY - turretFieldY, targetX - turretFieldX));

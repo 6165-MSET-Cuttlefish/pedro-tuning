@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -11,7 +8,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 
-@Config
 @TeleOp(group = "Test")
 public class Mecanum extends OpMode {
     public static boolean currentTelemetry = false;
@@ -32,8 +28,6 @@ public class Mecanum extends OpMode {
 
         fl.setDirection(DcMotorSimple.Direction.REVERSE);
         bl.setDirection(DcMotorSimple.Direction.REVERSE);
-
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
     }
 
     @Override

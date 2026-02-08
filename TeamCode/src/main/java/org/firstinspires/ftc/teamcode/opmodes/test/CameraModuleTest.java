@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -8,7 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.core.OpModeEx;
 
 @TeleOp(name = "Camera Module Test", group = "Test")
-@Config
 @Disabled
 public class CameraModuleTest extends OpModeEx {
     @Override

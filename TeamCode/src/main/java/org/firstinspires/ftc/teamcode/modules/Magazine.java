@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.modules;
 import static org.firstinspires.ftc.teamcode.core.Robot.magazineTelemetry;
 import static org.firstinspires.ftc.teamcode.core.Robot.robot;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.RobotLog;
@@ -15,7 +14,6 @@ import org.firstinspires.ftc.teamcode.lib.EnhancedMotor;
 import org.firstinspires.ftc.teamcode.lib.EnhancedServo;
 import org.firstinspires.ftc.teamcode.lib.State;
 
-@Config
 public class Magazine extends ModuleEx {
     private final EnhancedServo horizontalFront;
     private final EnhancedServo horizontalBack;

@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -10,7 +8,6 @@ import org.firstinspires.ftc.teamcode.architecture.hardware.SRSHub;
 @TeleOp(name = "Color Sensor Test", group = "Test")
 public class ColorSensorTest extends LinearOpMode {
     private SRSHub hub;
-    private MultipleTelemetry tel;
 
     //perhaps calibrate these with a button on init?
     double sensor1EmptyRed = 82;
@@ -34,8 +31,6 @@ public class ColorSensorTest extends LinearOpMode {
         config.addI2CDevice(2, new SRSHub.APDS9151());
         config.addI2CDevice(3, new SRSHub.APDS9151());
         hub.init(config);
-
-        tel = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         while (!hub.ready() && !isStopRequested()) {
             sleep(10);
@@ -65,44 +60,44 @@ public class ColorSensorTest extends LinearOpMode {
             String pattern = getColorCode(result3.color) + getColorCode(result2.color)
                     + getColorCode(result1.color);
 
-            tel.addData("Pattern", pattern);
-            tel.addLine();
+            telemetry.addData("Pattern", pattern);
+            telemetry.addLine();
 
-            tel.addLine("=== Sensor 1 (Bus 1) ===");
+            telemetry.addLine("=== Sensor 1 (Bus 1) ===");
             displaySensor(sensor1, result1);
-            tel.addLine();
+            telemetry.addLine();
 
-            tel.addLine("=== Sensor 2 (Bus 2) ===");
+            telemetry.addLine("=== Sensor 2 (Bus 2) ===");
             displaySensor(sensor2, result2);
-            tel.addLine();
+            telemetry.addLine();
 
-            tel.addLine("=== Sensor 3 (Bus 3) ===");
+            telemetry.addLine("=== Sensor 3 (Bus 3) ===");
             displaySensor(sensor3, result3);
 
-            tel.update();
+            telemetry.update();
         }
     }
 
     private void displaySensor(SRSHub.APDS9151 sensor, DetectionResult result) {
         if (sensor.disconnected) {
-            tel.addLine("⚠ DISCONNECTED");
+            telemetry.addLine("⚠ DISCONNECTED");
             return;
         }
 
-        tel.addData("Red", sensor.red);
-        tel.addData("Green", sensor.green);
-        tel.addData("Blue", sensor.blue);
-        tel.addData("Infrared", sensor.infrared);
-        tel.addData("Proximity", sensor.proximity);
+        telemetry.addData("Red", sensor.red);
+        telemetry.addData("Green", sensor.green);
+        telemetry.addData("Blue", sensor.blue);
+        telemetry.addData("Infrared", sensor.infrared);
+        telemetry.addData("Proximity", sensor.proximity);
 
         int total = sensor.red + sensor.green + sensor.blue;
         if (total > 0) {
-            tel.addData("% Red", String.format("%.1f%%", sensor.red * 100.0 / total));
-            tel.addData("% Green", String.format("%.1f%%", sensor.green * 100.0 / total));
-            tel.addData("% Blue", String.format("%.1f%%", sensor.blue * 100.0 / total));
-            tel.addData("Detected", result.color);
-            tel.addData("Green Count", result.greenCount);
-            tel.addData("Purple Count", result.purpleCount);
+            telemetry.addData("% Red", String.format("%.1f%%", sensor.red * 100.0 / total));
+            telemetry.addData("% Green", String.format("%.1f%%", sensor.green * 100.0 / total));
+            telemetry.addData("% Blue", String.format("%.1f%%", sensor.blue * 100.0 / total));
+            telemetry.addData("Detected", result.color);
+            telemetry.addData("Green Count", result.greenCount);
+            telemetry.addData("Purple Count", result.purpleCount);
         }
     }
 
@@ -198,9 +193,9 @@ public class ColorSensorTest extends LinearOpMode {
             purple += 1;
         }
 
-        tel.addData(sensorID + " redRatio ", "%.2f", redRatio);
-        tel.addData(sensorID + " greenRatio ", "%.2f", greenRatio);
-        tel.addData(sensorID + " blueRatio ", "%.2f", blueRatio);
+        telemetry.addData(sensorID + " redRatio ", "%.2f", redRatio);
+        telemetry.addData(sensorID + " greenRatio ", "%.2f", greenRatio);
+        telemetry.addData(sensorID + " blueRatio ", "%.2f", blueRatio);
 
         String color;
         if (green > purple && green > 1) {

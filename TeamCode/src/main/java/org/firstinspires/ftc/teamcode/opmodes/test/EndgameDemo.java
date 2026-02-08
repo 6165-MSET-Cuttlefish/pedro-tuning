@@ -1,8 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes.test;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.AnalogInput;
@@ -17,7 +15,6 @@ import org.firstinspires.ftc.teamcode.architecture.hardware.AbsoluteAnalogEncode
 import org.firstinspires.ftc.teamcode.lib.Action;
 import org.firstinspires.ftc.teamcode.lib.Actions;
 
-@Config
 @TeleOp(name = "Endgame Demo", group = "Test")
 public class EndgameDemo extends OpMode {
     public static class HardwareConfig {
@@ -137,8 +134,6 @@ public class EndgameDemo extends OpMode {
 
         initialLiftPidflConfig.usePidfl = false;
         initialLiftPidflConfig.leftTargetPosition = 0;
-
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
     }
 
     @Override
