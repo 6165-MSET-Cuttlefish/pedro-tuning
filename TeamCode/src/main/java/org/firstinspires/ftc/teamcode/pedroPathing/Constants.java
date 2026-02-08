@@ -41,7 +41,7 @@ public class Constants {
                     .yVelocity(50.881536048228355)
                     .motorCachingThreshold(0.01)
                     .useVoltageCompensation(true)
-                    .nominalVoltage(13.5);
+                    .nominalVoltage(10);
 
     public static PinpointConstants localizerConstants =
             new PinpointConstants()
@@ -53,7 +53,7 @@ public class Constants {
                     .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED)
                     .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED);
 
-    public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 0.5, 1);
+    public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
 
     public static Follower createFollower(HardwareMap hardwareMap) {
         return new FollowerBuilder(followerConstants, hardwareMap)
