@@ -24,6 +24,7 @@ import com.pedropathing.telemetry.SelectableOpMode;
 import com.pedropathing.util.*;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -970,6 +971,8 @@ class Line extends OpMode {
     private Path forwards;
     private Path backwards;
 
+    ElapsedTime timer = new ElapsedTime();
+
     @Override
     public void init() {
         follower.setStartingPose(new Pose(72, 72));
@@ -994,6 +997,8 @@ class Line extends OpMode {
         backwards = new Path(new BezierLine(new Pose(DISTANCE + 72,72), new Pose(72,72)));
         backwards.setConstantHeadingInterpolation(0);
         follower.followPath(forwards);
+
+        timer.reset();
     }
 
     /** This runs the OpMode, updating the Follower as well as printing out the debug statements to the Telemetry */
@@ -1014,6 +1019,8 @@ class Line extends OpMode {
 
         telemetryM.debug("Driving Forward?: " + forward);
         telemetryM.update(telemetry);
+
+        while (timer.milliseconds() < 40) { }
     }
 }
 
