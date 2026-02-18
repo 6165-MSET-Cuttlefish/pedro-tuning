@@ -1020,7 +1020,7 @@ class Line extends OpMode {
         telemetryM.debug("Driving Forward?: " + forward);
         telemetryM.update(telemetry);
 
-        while (timer.milliseconds() < 40) { }
+        while (timer.milliseconds() < 50) { }
     }
 }
 
