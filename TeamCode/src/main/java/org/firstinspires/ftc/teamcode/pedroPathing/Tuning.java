@@ -816,6 +816,7 @@ class HeadingTuner extends OpMode {
 
     private Path forwards;
     private Path backwards;
+    ElapsedTime timer = new ElapsedTime();
 
     @Override
     public void init() {
@@ -870,6 +871,9 @@ class HeadingTuner extends OpMode {
         telemetryM.addData("Zero Line", 0);
         telemetryM.addData("Error", follower.errorCalculator.getHeadingError());
         telemetryM.update(telemetry);
+
+        while (timer.milliseconds() < 50) { }
+        timer.reset();
     }
 }
 
@@ -1010,17 +1014,23 @@ class Line extends OpMode {
         if (!follower.isBusy()) {
             if (forward) {
                 forward = false;
+                backwards.setConstraints(Constants.pathConstraints);
                 follower.followPath(backwards);
             } else {
                 forward = true;
+                forwards.setConstraints(Constants.pathConstraints);
                 follower.followPath(forwards);
             }
         }
 
+
         telemetryM.debug("Driving Forward?: " + forward);
+
+        telemetryM.debug("Timer: " + timer.milliseconds());
         telemetryM.update(telemetry);
 
         while (timer.milliseconds() < 50) { }
+        timer.reset();
     }
 }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Robot type="FirstInspires-FTC">
     <LynxUsbDevice name="Control Hub Portal" parentModuleAddress="173" serialNumber="(embedded)">
-        <!-- Note: Analog ports 0 and 2 are closer to the edge of the hubs -->
         <LynxModule name="Control Hub" port="173">
             <!-- Motors -->
             <goBILDA5202SeriesMotor name="br" port="0" />
@@ -9,15 +8,13 @@
             <goBILDA5202SeriesMotor name="fr" port="2" />
             <goBILDA5202SeriesMotor name="intake" port="3" />
             <!-- Servos -->
-            <Servo name="headlightRight" port="1" />
-            <Servo name="turretFront" port="2" /> <!-- SPI port 1 -->
-            <Servo name="turretBack" port="3" /> <!-- SPI port 2 -->
-            <Servo name="rightPto" port="4" />
-            <ContinuousRotationServo name="rightInitial" port="5" /> <!-- SPI port 4 -->
-            <!-- Analog -->
-            <AnalogInput name="leftInitialEncoder" port="0"/>
-            <AnalogInput name="rightInitialEncoder" port="1"/>
-            <AnalogInput name="floodgate" port="2"/>
+            <Servo name="headlightRight" port="0" /> <!-- Right SPI port 5 -->
+            <Servo name="turretFront" port="1" /> <!-- Right SPI port 1 -->
+            <Servo name="turretBack" port="2" /> <!-- Right SPI port 2 -->
+            <Servo name="rightPto" port="3" /> <!-- Right SPI port 3 -->
+            <ContinuousRotationServo name="rightInitial" port="4" /> <!-- Right SPI port 4 -->
+            <!-- Analog (ports 0 and 2 are closer to the edge of the hub) -->
+            <AnalogInput name="rightInitialEncoder" port="0"/>
             <!-- I2C -->
             <LynxEmbeddedIMU name="imu" bus="0" port="0" />
         </LynxModule>
@@ -25,17 +22,20 @@
             <!-- Motors -->
             <goBILDA5202SeriesMotor name="fl" port="0" />
             <goBILDA5202SeriesMotor name="bl" port="1" />
-            <goBILDA5202SeriesMotor name="rightFlywheel" port="2" /> <!-- Don't use the port 2 encoder on the current Expansion Hub -->
+            <goBILDA5202SeriesMotor name="rightFlywheel" port="2" /> <!-- Don't use the port 2 encoder on the current Expansion Hub, it shorts -->
             <goBILDA5202SeriesMotor name="leftFlywheel" port="3" />
             <!-- Servos -->
-            <Servo name="horizontalFront" port="0" />
-            <Servo name="horizontalBack" port="1" />
-            <Servo name="leftPto" port="2" />
-            <Servo name="hood" port="3" />
-            <Servo name="headlightLeft" port="4" />
-            <ContinuousRotationServo name="leftInitial" port="5" /> <!-- SPI port 3 -->
+            <Servo name="horizontalFront" port="0" /> <!-- Left SPI port 3 -->
+            <Servo name="horizontalBack" port="1" /> <!-- Left SPI port 2 -->
+            <Servo name="leftPto" port="2" /> <!-- Left SPI port 4 -->
+            <Servo name="hood" port="3" /> <!-- Left SPI port 1 -->
+            <Servo name="headlightLeft" port="4" /> <!-- Left SPI port 6  -->
+            <ContinuousRotationServo name="leftInitial" port="5" /> <!-- Left SPI port 5 -->
+            <!-- Analog (ports 0 and 2 are closer to the edge of the hub) -->
+            <AnalogInput name="leftInitialEncoder" port="0"/>
+            <AnalogInput name="floodgate" port="2"/>
             <!-- I2C -->
-            <goBILDAPinpoint name="pinpoint" bus="1" port="0" /> <!-- Physical port 1 -->
+            <goBILDAPinpoint name="pinpoint" bus="3" port="0" /> <!-- Physical port 1 -->
             <SRSHub name="srsHub" bus="2" port="0" /> <!-- Physical port 2 -->
         </LynxModule>
     </LynxUsbDevice>
